@@ -61,7 +61,7 @@ export default function Footer() {
                 <div className="footer-column col-lg-4">
                   <div className="widget widget_about">
                     <div className="logo">
-                      <a href="index.html">
+                      <a href="/">
                         <img src={logo} alt="" />
                       </a>
                     </div>
@@ -81,19 +81,19 @@ export default function Footer() {
                         <div className="widget-content">
                           <ul className="list">
                             <li>
-                              <a href="index.html">Home</a>
+                              <a href="/">Home</a>
                             </li>
                             <li>
-                              <a href="about.html">About Us</a>
+                              <a href="about">About Us</a>
                             </li>
                             <li>
-                              <a href="#">Appointment</a>
+                              <a href="login">Login</a>
                             </li>
                             <li>
-                              <a href="testimonial.html">Testimonials</a>
+                              <a href="services">Services</a>
                             </li>
                             <li>
-                              <a href="contact.html">Contact Us</a>
+                              <a href="contact">Contact Us</a>
                             </li>
                           </ul>
                         </div>

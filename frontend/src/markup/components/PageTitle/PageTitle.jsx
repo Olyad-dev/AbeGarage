@@ -12,7 +12,7 @@ function PageTitle({ title, pageName}) {
         <h2>{title}</h2>
         <ul className="page-breadcrumb">
           <li>
-            <a href="index.html">home</a>
+            <a href="/">home</a>
           </li>
           <li>{pageName}</li>
         </ul>

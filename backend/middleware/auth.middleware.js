@@ -49,8 +49,3 @@ const isAdmin = async (req, res, next) => {
 module.exports = authMiddleware = { verifyToken, isAdmin };
 
 
-// const authMiddleware = {
-//   verifyToken,
-//   isAdmin,
-// };
-

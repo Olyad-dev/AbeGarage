@@ -17,26 +17,28 @@ const EmployeeList = () => {
 
   useEffect(() => {
     const allEmployees = employeeService.getAllEmployees(token);
-    allEmployees.then((response) => {
-      if(!response.ok) {
-        console.log(response.status);
-        setApiError(true);
-        if (response.status === 401) {
-          setApiErrorMessage("Please log in again");
-        } else if (response.status === 403) {
-          setApiErrorMessage("You do not have permission to view this page");
+    allEmployees
+      .then((response) => {
+        if (!response.ok) {
+          setApiError(true);
+          if (response.status === 401) {
+            setApiErrorMessage("Please log in again");
+          } else if (response.status === 403) {
+            setApiErrorMessage("You do not have permission to view this page");
+          } else {
+            setApiErrorMessage("Please try again later");
+          }
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (Array.isArray(data) && data.length !== 0) {
+          setEmployees(data); // Corrected state update
         } else {
-          setApiErrorMessage("Please try again later");
         }
-      }
-      return response.json()
-    }).then((data) =>{
-        if (data.data.length !==0) {           
-            setEmployees(data.data)
-        }
-    }).catch((err) => {
-        console.log(err)
-    })
+      })
+      .catch((err) => {
+      });
   }, []);
 
   return (
@@ -70,6 +72,7 @@ const EmployeeList = () => {
                   </tr>
                 </thead>
                 <tbody>
+                  {console.log("Employees array before map:", employees)}
                   {employees.map((employee) => (
                     <tr key={employee.employee_id}>
                       <td>{employee.active_employee ? "Yes" : "No"}</td>

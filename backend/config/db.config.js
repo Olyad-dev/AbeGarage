@@ -8,8 +8,13 @@ const dbconfig = {
 };
 const pool = mysql.createPool(dbconfig);
 async function query(sql, params) {
-  const [rows, fields] = await pool.execute(sql, params);
-  return rows;
+  try {
+    const [rows, fields] = await pool.execute(sql, params);
+    return rows;
+  } catch (error) {
+    console.error("Error executing MySQL query:", error);
+    throw error;
+  }
 }
 
 module.exports = {
